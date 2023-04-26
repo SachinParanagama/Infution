@@ -5,11 +5,9 @@ const cors = require("cors");
 const dotenv=require("dotenv");
 const notes = require("./data/notes");
 const connectDB = require("./config/db");
-const userRoutes =require('./routes/userRoutes');
 const orderRoutes = require("./routes/orderRoutes");
 const orderRouter = require("./routes/orders.js");
-const user = require("./routes/user");
-const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
+
 
 
 const app  =express();
@@ -23,14 +21,14 @@ app.use(bodyparser.urlencoded({ extended: true }));
 
 app.use('/uploads', express.static('backend/uploads'));
 
-app.use('/api/users',userRoutes);
+
 app.use('/api/orders',orderRoutes);
 app.use("/order",orderRouter);
 
 
 //app.use('/user', user);
-app.use(notFound);
-app.use(errorHandler);
+// app.use(notFound);
+// app.use(errorHandler);
 
 const PORT=process.env.PORT  || 5000;
 
