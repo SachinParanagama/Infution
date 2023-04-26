@@ -75,7 +75,8 @@ const authUser = asyncHandler(async (req, res) => {
 
 const updateUserProfile = asyncHandler(async (req, res) => {
   //initially need their id 
-  const user = await User.findById(req.user._id);
+  const user = await User.findOneAndUpdate
+(req.user._id);
 
   if (user) {
     user.name = req.body.name || user.name;

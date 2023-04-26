@@ -4,7 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon backend/server.js"
+    "start": "nodemon backend/server.js",
+    "check:format": "prettier --check .",
+    "format:fix": "prettier --write ."
   },
   "author": "Rishad",
   "license": "ISC",
@@ -21,6 +23,7 @@
     "mongoose": "^6.3.2",
     "multer": "^1.4.4",
     "nodemon": "^2.0.15",
+    "prettier": "^2.8.8",
     "react-datepicker": "^4.8.0",
     "react-icons": "^4.3.1",
     "react-stripe-checkout": "^2.6.3",
