@@ -12,7 +12,7 @@ router.route('/add').post(async(req,res) => {
         cvv: req.body.cvv,
         street: req.body.street,
         city: req.body.city,
-        state: req.body.states,
+        state: req.body.state,
         zip: req.body.zip,
         amount: req.body.amount,
         IDOrder: req.body.IDOrder
