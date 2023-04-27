@@ -2,7 +2,7 @@ const router = require("express").Router();
 let Delivery = require("../models/Delivery");
 
 
-router.route("/add").post((req, res) => {
+router.route("/newDelivery").post((req, res) => {
 
 
     const deliverID = req.body.OID;
@@ -39,7 +39,7 @@ router.route("/add").post((req, res) => {
 
 
 
-router.route("/view").get((req, res) => {
+router.route("/getDelivery").get((req, res) => {
     Delivery.find().then((delivers) => {
         res.json(delivers)
     }).catch((err) => {
@@ -48,7 +48,7 @@ router.route("/view").get((req, res) => {
 })
 
 
-router.put('/update/:id', (req, res) => {
+router.put('/updateDelivery/:id', (req, res) => {
     Delivery.findByIdAndUpdate(
         req.params.id,
         {
