@@ -1,0 +1,161 @@
+!SESSION 2023-04-27 23:16:54.200 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=11.0.8-internal
+java.vendor=N/A
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.ui 2 0 2023-04-27 23:17:06.631
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2023-04-27 23:17:06.631
+!MESSAGE Commands should really have a category: plug-in='org.eclipse.papyrus.infra.ui.emf', id='org.eclipse.papyrus.infra.emf.readonly.EnableWriteCommand', categoryId='org.eclipse.papyrus.editor.category'
+
+!ENTRY org.eclipse.ui 2 0 2023-04-27 23:17:07.735
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2023-04-27 23:17:07.735
+!MESSAGE Commands should really have a category: plug-in='org.eclipse.papyrus.infra.ui.emf', id='org.eclipse.papyrus.infra.emf.readonly.EnableWriteCommand', categoryId='org.eclipse.papyrus.editor.category'
+
+!ENTRY org.eclipse.jface 2 0 2023-04-27 23:17:09.695
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2023-04-27 23:17:09.695
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@202ba60a,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@12ebcdf6,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2023-04-27 23:17:09.695
+!MESSAGE A conflict occurred for ALT+SHIFT+R:
+Binding(ALT+SHIFT+R,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.rename.element,Rename - Refactoring ,
+		Rename the selected element,
+		Category(org.eclipse.jdt.ui.category.refactoring,Refactor - Java,Java Refactoring Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@30dd23e2,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+SHIFT+R,
+	ParameterizedCommand(Command(org.eclipse.ui.edit.rename,Rename,
+		Rename the selected item,
+		Category(org.eclipse.ui.category.file,File,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@88fc9cb,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2023-04-27 23:17:15.538
+!MESSAGE Removing PartDescriptorImpl with the "org.wso2.sample.multipage.form.editor.editors.FormView" id and the "My View" label.It points to the non available "bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" class. Bundle might have been uninstalled
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-04-27 23:17:15.607
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Shehani'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.ui.workbench 4 2 2023-04-27 23:17:16.334
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 0
+java.lang.IllegalArgumentException: Can not write to destination runtime
+	at org.rauschig.jarchivelib.IOUtils.requireDirectory(IOUtils.java:121)
+	at org.rauschig.jarchivelib.CommonsArchiver.extract(CommonsArchiver.java:95)
+	at org.wso2.integrationstudio.distribution.project.util.MavenMultiModuleImportUtils.extractZipFile(MavenMultiModuleImportUtils.java:96)
+	at org.wso2.integrationstudio.carbonserver44microei42.handlers.PlatformEarlyStartUpHandler.earlyStartup(PlatformEarlyStartUpHandler.java:186)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(EarlyStartupRunnable.java:79)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:55)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.ui.internal.Workbench$40.run(Workbench.java:2667)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.ui 4 0 2023-04-27 23:17:16.336
+!MESSAGE Unable to execute early startup code for the org.eclipse.ui.IStartup extension contributed by the 'org.wso2.integrationstudio.carbonserver44microei42' plug-in.
+!STACK 0
+java.lang.IllegalArgumentException: Can not write to destination runtime
+	at org.rauschig.jarchivelib.IOUtils.requireDirectory(IOUtils.java:121)
+	at org.rauschig.jarchivelib.CommonsArchiver.extract(CommonsArchiver.java:95)
+	at org.wso2.integrationstudio.distribution.project.util.MavenMultiModuleImportUtils.extractZipFile(MavenMultiModuleImportUtils.java:96)
+	at org.wso2.integrationstudio.carbonserver44microei42.handlers.PlatformEarlyStartUpHandler.earlyStartup(PlatformEarlyStartUpHandler.java:186)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(EarlyStartupRunnable.java:79)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:55)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.ui.internal.Workbench$40.run(Workbench.java:2667)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.wso2.integrationstudio.carbonserver44microei42 4 0 2023-04-27 23:17:16.942
+!MESSAGE Error occured while setting the server properties.
+!STACK 0
+java.nio.file.NoSuchFileException: C:\Program Files\WSO2\IntegrationStudio\runtime\microesb\conf\deployment.toml
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(WindowsFileAttributeViews.java:53)
+	at java.base/sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(WindowsFileAttributeViews.java:38)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.readAttributes(WindowsFileSystemProvider.java:198)
+	at java.base/java.nio.file.Files.readAttributes(Files.java:1763)
+	at java.base/java.nio.file.Files.size(Files.java:2380)
+	at org.antlr.v4.runtime.CharStreams.fromPath(CharStreams.java:86)
+	at org.antlr.v4.runtime.CharStreams.fromPath(CharStreams.java:76)
+	at net.consensys.cava.toml.Toml.parse(Toml.java:79)
+	at net.consensys.cava.toml.Toml.parse(Toml.java:67)
+	at org.wso2.integrationstudio.carbonserver44microei42.util.CarbonServer44eiUtils.getTomlResults(CarbonServer44eiUtils.java:319)
+	at org.wso2.integrationstudio.carbonserver44microei42.ServerProperties.getServerInstanceProperties(ServerProperties.java:46)
+	at org.wso2.integrationstudio.carbonserver44microei42.register.product.servers.MicroIntegratorInstance.readConfigs(MicroIntegratorInstance.java:148)
+	at org.wso2.integrationstudio.carbonserver44microei42.register.product.servers.MicroIntegratorInstance.setupServer(MicroIntegratorInstance.java:127)
+	at org.wso2.integrationstudio.carbonserver44microei42.register.product.servers.MicroIntegratorInstance.<init>(MicroIntegratorInstance.java:75)
+	at org.wso2.integrationstudio.carbonserver44microei42.register.product.servers.MicroIntegratorInstance.getInstance(MicroIntegratorInstance.java:85)
+	at org.wso2.integrationstudio.dashboard.handlers.PlatformEarlyStartUpHandler.earlyStartup(PlatformEarlyStartUpHandler.java:91)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(EarlyStartupRunnable.java:79)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:55)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.ui.internal.Workbench$40.run(Workbench.java:2667)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.wso2.tools.eclipse.carbonserver.base 4 0 2023-04-27 23:17:16.988
+!MESSAGE C:\Program Files\WSO2\IntegrationStudio\runtime\microesb\conf\axis2\axis2.xml (The system cannot find the path specified)
+!STACK 0
+java.io.FileNotFoundException: C:\Program Files\WSO2\IntegrationStudio\runtime\microesb\conf\axis2\axis2.xml (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:112)
+	at java.base/sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:86)
+	at java.base/sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:184)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLEntityManager.setupCurrentEntity(XMLEntityManager.java:652)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLVersionDetector.determineDocVersion(XMLVersionDetector.java:150)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:860)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:824)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:246)
+	at java.xml/com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339)
+	at java.xml/javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:206)
+	at org.wso2.integrationstudio.carbonserver.base.utils.CarbonServerUtils.setServicePath(CarbonServerUtils.java:191)
+	at org.wso2.integrationstudio.carbonserver.base.manager.CarbonServerManager.serverAdded(CarbonServerManager.java:125)
+	at org.wso2.integrationstudio.carbonserver.base.monitor.CarbonServerLifeCycleListener.serverAdded(CarbonServerLifeCycleListener.java:26)
+	at org.eclipse.wst.server.core.internal.ResourceManager.fireServerEvent(ResourceManager.java:560)
+	at org.eclipse.wst.server.core.internal.ResourceManager.registerServer(ResourceManager.java:1228)
+	at org.eclipse.wst.server.core.internal.ResourceManager.addServer(ResourceManager.java:712)
+	at org.eclipse.wst.server.core.internal.Server.saveToMetadata(Server.java:489)
+	at org.eclipse.wst.server.core.internal.Base.doSave(Base.java:268)
+	at org.eclipse.wst.server.core.internal.Server.doSave(Server.java:478)
+	at org.eclipse.wst.server.core.internal.ServerWorkingCopy.save(ServerWorkingCopy.java:436)
+	at org.eclipse.wst.server.core.internal.ServerWorkingCopy.saveAll(ServerWorkingCopy.java:466)
+	at org.wso2.integrationstudio.carbonserver44microei42.register.product.servers.MicroIntegratorInstance.setupServer(MicroIntegratorInstance.java:129)
+	at org.wso2.integrationstudio.carbonserver44microei42.register.product.servers.MicroIntegratorInstance.<init>(MicroIntegratorInstance.java:75)
+	at org.wso2.integrationstudio.carbonserver44microei42.register.product.servers.MicroIntegratorInstance.getInstance(MicroIntegratorInstance.java:85)
+	at org.wso2.integrationstudio.dashboard.handlers.PlatformEarlyStartUpHandler.earlyStartup(PlatformEarlyStartUpHandler.java:91)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(EarlyStartupRunnable.java:79)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:55)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.ui.internal.Workbench$40.run(Workbench.java:2667)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
