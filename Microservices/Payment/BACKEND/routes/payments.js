@@ -39,7 +39,7 @@ router.route('/add').post(async(req,res) => {
 })
 
 
-router.route("/view").get((req,res)=>{
+router.route("/getPayment").get((req,res)=>{
 
     Payment.find().then((payments)=>{
         res.json(payments)
