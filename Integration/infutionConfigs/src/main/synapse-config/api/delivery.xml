@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/delivery" name="delivery" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET" url-mapping="/getDelivery">
+        <inSequence>
+            <log description="List all delivery">
+                <property name="Message" value="Welcome to delivery service"/>
+            </log>
+            <send>
+                <endpoint key="getDelivery"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" uri-template="/newDelivery">
+        <inSequence>
+            <log description="newDelivery">
+                <property name="message" value="Routing to new delivery"/>
+            </log>
+            <send>
+                <endpoint key="newDelivery"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="PATCH" uri-template="/{delivery_id}">
+        <inSequence>
+            <log description="updateDelivery">
+                <property name="message" value="Routing to update delivery"/>
+            </log>
+            <send>
+                <endpoint key="updateDelivery"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="DELETE" uri-template="/{delivery_id}">
+        <inSequence>
+            <log description="Delete delivery">
+                <property name="message" value="Routing to delete delivery"/>
+            </log>
+            <send>
+                <endpoint key="deleteDelivery"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>
