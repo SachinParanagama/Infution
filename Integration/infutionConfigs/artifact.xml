@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="delivery" groupId="com.infution.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/delivery.xml</file>
+    </artifact>
+    <artifact name="delivery_swagger" groupId="com.infution.metadata" version="1.0.0" type="synapse/metadata" serverRole="EnterpriseServiceBus">
+        <file>src/main/resources/metadata/delivery_swagger.yaml</file>
+    </artifact>
+    <artifact name="delivery_metadata" groupId="com.infution.metadata" version="1.0.0" type="synapse/metadata" serverRole="EnterpriseServiceBus">
+        <file>src/main/resources/metadata/delivery_metadata.yaml</file>
+    </artifact>
+    <artifact name="getDelivery" groupId="com.infution.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/getDelivery.xml</file>
+    </artifact>
+    <artifact name="payment" groupId="com.infution.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/payment.xml</file>
+    </artifact>
+    <artifact name="payment_swagger" groupId="com.infution.metadata" version="1.0.0" type="synapse/metadata" serverRole="EnterpriseServiceBus">
+        <file>src/main/resources/metadata/payment_swagger.yaml</file>
+    </artifact>
+    <artifact name="payment_metadata" groupId="com.infution.metadata" version="1.0.0" type="synapse/metadata" serverRole="EnterpriseServiceBus">
+        <file>src/main/resources/metadata/payment_metadata.yaml</file>
+    </artifact>
+    <artifact name="getPayment" groupId="com.infution.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/getPayment.xml</file>
+    </artifact>
+    <artifact name="newDelivery" groupId="com.infution.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/newDelivery.xml</file>
+    </artifact>
+    <artifact name="updateDelivery" groupId="com.infution.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/updateDelivery.xml</file>
+    </artifact>
+    <artifact name="deleteDelivery" groupId="com.infution.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/deleteDelivery.xml</file>
+    </artifact>
+</artifacts>

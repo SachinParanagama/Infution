@@ -74,7 +74,7 @@ router.post('/add', upload, async(req,res)=>{
 
 
 
-router.route("/view").get((req,res)=>{
+router.route("/getProduct").get((req,res)=>{
     Product.find().then((products)=>{
         res.json(products)
     }).catch((err)=>{
