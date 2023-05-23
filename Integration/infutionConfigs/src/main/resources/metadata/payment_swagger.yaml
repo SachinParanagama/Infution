@@ -1,59 +1,13 @@
 openapi: 3.0.1
 info:
-  title: delivery
+  title: payment
   description: API Definition of payment
   version: 1.0.0
 servers:
-- url: http://localhost:8290/delivery
+- url: http://localhost:8290/payment
 paths:
-  /getDelivery:
+  /getPayment:
     get:
-      responses:
-        default:
-          description: Default response
-  /newDelivery:
-    post:
-      requestBody:
-        description: Sample Payload
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                payload:
-                  type: object
-        required: false
-      responses:
-        default:
-          description: Default response
-  /{delivery_id}:
-    delete:
-      parameters:
-      - name: delivery_id
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        default:
-          description: Default response
-    patch:
-      parameters:
-      - name: delivery_id
-        in: path
-        required: true
-        schema:
-          type: string
-      requestBody:
-        description: Sample Payload
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                payload:
-                  type: object
-        required: false
       responses:
         default:
           description: Default response
