@@ -13,7 +13,7 @@ function AdminCards() {
                     src="images/product.png"
                     text="Manage Products Details"
                     label="Product Management"
-                    path="/add"
+                    path="/view-product"
                 />
                 <CardItem
                     src="images/delivery.gif"

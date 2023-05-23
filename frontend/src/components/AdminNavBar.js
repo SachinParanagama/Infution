@@ -1,111 +1,56 @@
-import React,{useState,useEffect} from 'react';
-import './HomeNavBar.css';
-import './Header/Header.css';
-import {Link} from 'react-router-dom';
-import {AiOutlineDingding} from 'react-icons/ai';
-import {useSelector,useDispatch} from 'react-redux';
-import { FaShoppingCart } from "react-icons/fa";
-import { FaUserCircle } from "react-icons/fa";
-import { logout } from "../actions/userAction";
-import {
-    Container,
-    Form,
-    FormControl,
-    Nav,
-    Navbar,
-    NavDropdown,
-  } from "react-bootstrap";
+import React from "react";
+import "./HomeNavBar.css";
+import "./Header/Header.css";
+import { Link } from "react-router-dom";
 
 
-function AdminNavBar () {
+// Material UI
+import SpaIcon from '@mui/icons-material/Spa';
+import Typography from '@mui/material/Typography';
 
-    const[click,setClick] = useState(false);
-
-    const handleClick = () => setClick(!click);
-    const closeMobileMenu = () => setClick(false);
-    const { cart } = useSelector(state => state.cart);
-
-    const userLogin = useSelector((state) => state.userLogin);
-    const { userInfo } = userLogin;
-    const dispatch = useDispatch();
-
-    const logoutHandler = () => {
-        dispatch(logout());
+function AdminNavBar() {
+  return (
+    <nav className="nav-bar position-relative" style={{backgroundColor: '#0A4D68', width: "100%"}}>
       
-      };
-    
-    useEffect(() => {}, [userInfo]);
-  
+      <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/home"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 1000,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >        <SpaIcon sx={{ display: { xl: 'none', md: 'flex' }, mr: 2 }} />
+          INFUTION
+          </Typography>
 
-    return(
-        <Navbar bg="dark" expand="lg" variant="dark">
-        <Container>
-          <Navbar.Brand>
-          <Link to='/admin-home' className='homenavbar-logo'>
-                  INFUTION <AiOutlineDingding/>
-          </Link>
-          </Navbar.Brand>
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            sx={{
+              mr: 1,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontSize: '0.9rem',
+              fontWeight: 700,
+              letterSpacing: '.01rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >  
+          <Link to="/admin-home">Dashboard</Link>
+          </Typography>
   
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            
-          <Nav className="m-auto">
-            <Form inline>
-              
-            </Form>
-          </Nav>
-  
-            {userInfo ? (
-              <>
-                <Nav>
-                <Nav.Link>
-                <Link to='/view-feedback' className='homenav-links'>
-                         Feedbacks
-                      </Link>
-                </Nav.Link>
-  
-                  <Nav.Link href="/customer-home">
-                         Customer Home     
-                </Nav.Link>
-  
-                  <NavDropdown title={userInfo?.name} id="basic-nav-dropdown">
-                    <NavDropdown.Item href="/profile" style={{color:'black'}}>
-                      <img
-                        alt=""
-                        src={`${userInfo.pic}`}
-                        width="25"
-                        height="25"
-                        style={{ marginRight: 10 }}
-                      />
-                      MyProfile
-                    </NavDropdown.Item>
-  
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item onClick={logoutHandler} style={{color:'black'}}>
-                      Logout
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                </Nav>
-              </>
-            ) : (
-              <Nav>
-                {" "}
-                <Nav.Link>
-                <Link to='/customer-home' className='homenav-links'>
-                         Customer Home
-                      </Link>
-                </Nav.Link>
-  
-                
-              </Nav>
-              
-            
-             
-            )}
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    );
+      
+    </nav>
+  );
 }
 
 export default AdminNavBar;

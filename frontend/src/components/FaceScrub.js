@@ -10,8 +10,6 @@ export default function FaceScrub() {
 
     const [products,setProducts] = useState([]);
 
-    const userLogin = useSelector((state) => state.userLogin);
-    const { userInfo } = userLogin;
    
     useEffect(() =>{
 
@@ -37,7 +35,7 @@ export default function FaceScrub() {
            <Row>
               {products.map((product)=> {
                   return(
-                    <ViewFaceScrub product={product}  userInfo={userInfo} />
+                    <ViewFaceScrub product={product} />
                   )
               })}
            </Row>

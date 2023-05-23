@@ -1,15 +1,14 @@
-import React from 'react';
-import AdminCards from './AdminCards';
-import Footer from './Footer';
-import AdminNavBar from './AdminNavBar';
-import Header from './Header/Header';
+
+import React from "react";
+import AdminCards from "./AdminCards";
+import AdminNavBar from "./AdminNavBar";
 
 
-export default function AdminHome(){
-    return(
-        <div className='back'>
-            <AdminNavBar/>
-            <AdminCards/>
-        </div>
-    )
+export default function AdminHome() {
+  return (
+    <div className="back">
+      <AdminNavBar />
+      <AdminCards />
+    </div>
+  );
 }
