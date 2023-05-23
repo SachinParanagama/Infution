@@ -2,16 +2,12 @@ import React, {useState,useEffect} from 'react';
 import axios from 'axios';
 import HomeNavBar from './HomeNavBar';
 import {Row,Container} from 'react-bootstrap';
-import { useSelector } from 'react-redux';
 import ViewFacePack from './ViewFacePack';
 
 
 export default function FacePack() {
 
     const [products,setProducts] = useState([]);
-
-    const userLogin = useSelector((state) => state.userLogin);
-    const { userInfo } = userLogin;
    
     useEffect(() =>{
 
@@ -37,7 +33,7 @@ export default function FacePack() {
            <Row>
               {products.map((product)=> {
                   return(
-                    <ViewFacePack product={product}  userInfo={userInfo} />
+                    <ViewFacePack product={product} />
                   )
               })}
            </Row>

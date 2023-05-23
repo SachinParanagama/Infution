@@ -1,50 +1,51 @@
-import React from 'react';
-import {Card, Col} from 'react-bootstrap';
-import {useDispatch} from 'react-redux';
-import { addToCart } from '../redux/actions/cartActions';
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../slices/cartSlice";
+import { Card, Col } from 'react-bootstrap';
 import '../App.css';
 
-const ViewBeautyProducts = ({product,userInfo}) => {
+const ViewBeautyProducts = ({ product, userInfo }) => {
     const cat = product.category;
 
     const dispatch = useDispatch();
 
     const handleAddToCart = () => {
-        dispatch(addToCart(product,userInfo));
+        dispatch(addToCart(product, userInfo));
         window.location.reload();
     };
- 
 
-    return(
+    return (
         <>
-            {cat === "Face scrub" &&
+            {cat === "Beauty product" &&
                 <Col md={6} lg={4} sm={12}>
                     <Card className="shadow-lg m-4 rounded card" >
 
-                        <Card.Img className='image center' src={"http://localhost:5000/uploads/" + product.image}></Card.Img>
-
                         <Card.Body>
-                            <Card.Title>{product.productName}</Card.Title>
-                            <Card.Title>Price: Rs.{product.price}.00</Card.Title>
-                            <Card.Title>{product.quantity} in stock</Card.Title>
-                            <div className='btnCenter'>
-                            <button 
-                                type='button' 
-                                className='btn btn-warning btn-sm'
-                                disabled={product.quantity <= 0}
-                                onClick={handleAddToCart}
-                                
-                                >
-                                    Add to Cart
-                            </button>
+                            <div key={product._id} className="product">
+                                <h3>{product.name}</h3>
+                                <img src={"http://localhost:5000/backend/uploads" + product.image} alt={product.name} />
+                                <div className="details">
+                                    <span>{product.quantity} in stock</span>
+                                    <span className="price">${product.price}</span>
+                                </div>
+                                <div className='btnCenter'>
+                                    <button
+                                        type='button'
+                                        className='btn btn-warning btn-sm'
+                                        disabled={product.quantity <= 0}
+                                        onClick={handleAddToCart}
+
+                                    >
+                                        Add to Cart
+                                    </button>
+                                </div>
                             </div>
                         </Card.Body>
 
                     </Card>
                 </Col>
             }
-                
-        </>                        
+        </>
+
     )
 }
 

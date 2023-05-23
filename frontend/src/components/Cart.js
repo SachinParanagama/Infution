@@ -1,240 +1,144 @@
-import React, {useState,useEffect} from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import {FaTrashAlt} from 'react-icons/fa';
-import {ADD_TO_CART} from '../redux/constants/cartConstants';
-import { deleteFromCart } from "../redux/actions/cartActions";
-import HomeNavBar from "./HomeNavBar";
-import {Link} from "react-router-dom";
-import axios from "axios";
-
+import { useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addToCart,
+  clearCart,
+  decreaseCart,
+  getTotals,
+  removeFromCart,
+} from "../slices/cartSlice";
+import PayButton from "./PayButton";
 
 const Cart = () => {
+  const cart = useSelector((state) => state.cart);
+  const auth = useSelector((state) => state.auth);
 
-    const {cart} = useSelector(state => state.cart);
-    const cartItems = [...cart];
-    const items = [];
-    const nItems = [];
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    const [products,setProducts] = useState([]);
-    const product = [...products];
+  useEffect(() => {
+    dispatch(getTotals());
+  }, [cart, dispatch]);
 
-    const userLogin = useSelector((state) => state.userLogin);
-    const { userInfo } = userLogin;
-
-    const [length,setLen] = useState("");
-    const [total,setTotal] = useState("");
-
-
-    useEffect(() => {
-        function setLength(){
-          var len = 0;
-          var tot = 0;
-  
-          for(var i=0; i<cart.length;i++){
-            if(userInfo?.name == cart[i].userName){
-              len = len + 1
-              tot = tot + cart[i].price
-            }
-          }
-          setLen(len)
-          setTotal(tot)
-        }
-  
-        setLength();
-  
-      }, [userInfo]);
-
-
-    useEffect(() =>{
-
-        function getProducts() {
-            axios.get("http://localhost:5000/product/view").then((res) => {
-
-                setProducts(res.data);
-                console.log(res.data)
-            }).catch((err) => {
-
-                alert(err.message);
-            })
-        }
-
-        getProducts();
-
-    }, [])
-
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-
-    const handleGoBackBtn = () => {
-        navigate(-1);
-    }
-
-    const handleQtyChange = (e,product) => {
-        const cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
-
-        cart.forEach(cartItem => {
-            if(cartItem._id === product._id) {
-                cartItem.count = e.target.value
-            }
-        });
-
-        localStorage.setItem('cart', JSON.stringify(cart));
-
-        dispatch({
-            type: ADD_TO_CART,
-            payload: cart,
-        })
-
-    };
-
-    const handleDeleteFromCart = (product) => {
-        dispatch(deleteFromCart(product))
-        window.location.reload();
-    }
-
-
-    const reduceQty = () => {
-
-        var n;
-        var j;
-        var ID;
-        var Quantity;
-
-        for(var i=0; i<cartItems.length; i++){
-            items[i] = cartItems[i].productName
-            nItems[i] = cartItems[i].count
-        }
-
-        for(n=0; n<items.length; n++){
-            for(j=0; j<product.length; j++){
-                if(items[n] == product[j].productName){
-                    Quantity = product[j].quantity - nItems[n]
-                    ID = product[j]._id
-                    
-                }
-            }
-		
-	        const updateQuantity = {
-                quantity: Quantity,
-            }
-
-            axios.put(`http://localhost:5000/product/update/quantity/${ID}`,updateQuantity).then(() =>{
-                    navigate('/add-order')
-            }).catch((err) =>{
-                alert(err)
-            })
-        }
-
-        
-        
-    }
-
-
-    return(
-        <>
-                <HomeNavBar/>
-        <section className="cart-page m-4">
-            {cart.length <= 0 ? (
-                <div className="jumbotron">
-                    <h1 className="display-4">Your Cart Is Empty 
-                        <button
-                         className="btn btn-light text-primary backBtn"
-                         onClick={handleGoBackBtn}>
-                            Go Back
-                        </button>
-                    </h1>
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
+  const handleDecreaseCart = (product) => {
+    dispatch(decreaseCart(product));
+  };
+  const handleRemoveFromCart = (product) => {
+    dispatch(removeFromCart(product));
+  };
+  const handleClearCart = () => {
+    dispatch(clearCart());
+  };
+  return (
+    <div className="cart-container">
+      <h2>Shopping Cart</h2>
+      {cart.cartItems.length === 0 ? (
+        <div className="cart-empty">
+          <p>Your cart is currently empty</p>
+          <div className="start-shopping">
+            <Link to="/home">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="currentColor"
+                className="bi bi-arrow-left"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+                />
+              </svg>
+              <span>Start Shopping</span>
+            </Link>
+          </div>
+        </div>
+      ) : (
+        <div>
+          <div className="titles">
+            <h3 className="product-title">Product</h3>
+            <h3 className="price">Price</h3>
+            <h3 className="quantity">Quantity</h3>
+            <h3 className="total">Total</h3>
+          </div>
+          <div className="cart-items">
+            {cart.cartItems &&
+              cart.cartItems.map((cartItem) => (
+                <div className="cart-item" key={cartItem.id}>
+                  <div className="cart-product">
+                    <img src={cartItem.image} alt={cartItem.name} />
+                    <div>
+                      <h3>{cartItem.name}</h3>
+                      <p>{cartItem.desc}</p>
+                      <button onClick={() => handleRemoveFromCart(cartItem)}>
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                  <div className="cart-product-price">${cartItem.price}</div>
+                  <div className="cart-product-quantity">
+                    <button onClick={() => handleDecreaseCart(cartItem)}>
+                      -
+                    </button>
+                    <div className="count">{cartItem.cartQuantity}</div>
+                    <button onClick={() => handleAddToCart(cartItem)}>+</button>
+                  </div>
+                  <div className="cart-product-total-price">
+                    ${cartItem.price * cartItem.cartQuantity}
+                  </div>
                 </div>
-            ) : (
-                <>
-                    
-
-                    <div className="row">
-                        <div className="col-md-8">
-
-                        <table className="table">
-  <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">Product</th>
-      <th scope="col">Price</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Remove</th>
-    </tr>
-  </thead>
-  <tbody>
-    {cart.map(product => {
-        if(userInfo?.name == product.userName){
-            return(
-                <tr key={product._id}>
-        <th scope="row">
-            <img
-                style={{maxWidth: '110px',
-                }}  
-                className="img-fluid w=100 img-thumbnail"
-                src={"http://localhost:5000/uploads/" + product.image}
-                alt=""
-            />
-
-        </th>
-        <td>{product.productName}</td>
-        <td>{product.price.toLocaleString(
-            'en-US',
-            {
-                style: 'currency',
-                currency: 'USD',
-            }
-        )}
-        </td>
-        <td>
-            <input
-             type='number'
-             min='1'
-             max={product.quantity}
-             value={product.count}
-             onChange={e => handleQtyChange(e,product)}/>
-        </td>
-        <td>
-            <button
-             type="button"
-             className="btn btn-danger btn-sm"
-             onClick={() => handleDeleteFromCart(product)}>
-                 <FaTrashAlt/>
+              ))}
+          </div>
+          <div className="cart-summary">
+            <button className="clear-btn" onClick={() => handleClearCart()}>
+              Clear Cart
             </button>
-        </td>
-      </tr>
-            )
-        }
-    })}
+            <div className="cart-checkout">
+              <div className="subtotal">
+                <span>Subtotal</span>
+                <span className="amount">${cart.cartTotalAmount}</span>
+              </div>
+              <p>Taxes and shipping calculated at checkout</p>
+              {auth._id ? (
+                <PayButton cartItems={cart.cartItems} />
+              ) : (
+                <button
+                  className="cart-login"
+                  onClick={() => navigate("/login")}
+                >
+                  Login to Check out
+                </button>
+              )}
 
-
-    
-   
-  </tbody>
-</table>
-
-                    </div>
-                        <div className="col-md-4 border-left pl-4">
-                            <h2>Cart Summary</h2>
-                            <p className="font-weight-light text-muted border-bottom">{cart.length === 1 ? '(1) Item' : `(${length}) Items`}</p>
-
-                            <p className="font-weight-bold">Total: ${total}</p>
-
-                            <button 
-                                    onClick={reduceQty}
-                                    className='btn btn-dark btn-large btn-block mb-5 py-2'
-                                    
-                                    >
-                                        Place an Order
-                            </button>
-
-                        </div>
-                    </div>
-                </>
-            )}
-        </section>
-        </>
-    )
-}
+              <div className="continue-shopping">
+                <Link to="/">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    className="bi bi-arrow-left"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+                    />
+                  </svg>
+                  <span>Continue Shopping</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default Cart;

@@ -10,8 +10,6 @@ export default function BodyScrub() {
 
     const [products,setProducts] = useState([]);
 
-    const userLogin = useSelector((state) => state.userLogin);
-    const { userInfo } = userLogin;
    
     useEffect(() =>{
 
@@ -37,7 +35,7 @@ export default function BodyScrub() {
            <Row>
               {products.map((product)=> {
                   return(
-                    <ViewBodyScrub product={product}  userInfo={userInfo} />
+                    <ViewBodyScrub product={product} />
                   )
               })}
            </Row>

@@ -1,3 +1,4 @@
+
 import React, {useState,useEffect} from 'react';
 import axios from 'axios';
 import HomeNavBar from './HomeNavBar';
@@ -10,9 +11,7 @@ export default function BeautyProducts() {
 
     const [products,setProducts] = useState([]);
 
-    const userLogin = useSelector((state) => state.userLogin);
-    const { userInfo } = userLogin;
-   
+
     useEffect(() =>{
 
         function getProducts() {
@@ -37,7 +36,7 @@ export default function BeautyProducts() {
            <Row>
               {products.map((product)=> {
                   return(
-                    <ViewBeautyProducts product={product}  userInfo={userInfo} />
+                    <ViewBeautyProducts product={product}   />
                   )
               })}
            </Row>

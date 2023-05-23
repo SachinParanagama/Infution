@@ -10,8 +10,6 @@ export default function NightCream() {
 
     const [products,setProducts] = useState([]);
 
-    const userLogin = useSelector((state) => state.userLogin);
-    const { userInfo } = userLogin;
    
     useEffect(() =>{
 
@@ -37,7 +35,7 @@ export default function NightCream() {
            <Row>
               {products.map((product)=> {
                   return(
-                    <ViewNightCream product={product}  userInfo={userInfo} />
+                    <ViewNightCream product={product}  />
                   )
               })}
            </Row>

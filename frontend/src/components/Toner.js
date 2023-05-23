@@ -10,8 +10,6 @@ export default function Toner() {
 
     const [products,setProducts] = useState([]);
 
-    const userLogin = useSelector((state) => state.userLogin);
-    const { userInfo } = userLogin;
    
     useEffect(() =>{
 
@@ -37,7 +35,7 @@ export default function Toner() {
            <Row>
               {products.map((product)=> {
                   return(
-                    <ViewToner product={product}  userInfo={userInfo} />
+                    <ViewToner product={product}  />
                   )
               })}
            </Row>
